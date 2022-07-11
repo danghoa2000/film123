@@ -44,6 +44,7 @@ Route::middleware('auth:admin')->group( function (){
     Route::post('/checkPassword', [HomeAdminController::class, 'checkPassword'])->name('checkPasswordAdmin');
 
     Route::get('/admin/film/index', [FilmController::class, 'index'])->name('film_index');
+    Route::get('/admin/film/{id}', [FilmController::class, 'show'])->name('film_show');
     Route::get('/admin/film/destroy/{id}', [FilmController::class, 'destroy'])->name('film_destroy');
     Route::get('/admin/film/create', [FilmController::class, 'create'])->name('film_create');
     Route::post('/admin/film/store', [FilmController::class, 'store'])->name('film_store');

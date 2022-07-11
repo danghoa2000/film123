@@ -58,7 +58,6 @@ class HomeController extends Controller
             )->where('id_film', $key->id_film)
             ->where('updated_at', $key->updated_at)
             ->first();
-
             $ep[$ep2->id_film] = $ep2->tap_so;
         }
 

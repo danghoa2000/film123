@@ -43,7 +43,7 @@
                                     <a href="{{route('detail_index', ['id' => $row->id])}}">
                                         <div class="product__item__pic set-bg" data-setbg="{{$row->img}}">
                                             <div class="ep">
-                                                {{$ep[$row->id]}}
+                                                {{ array_key_exists($row->id, $ep) ?  $ep[$row->id] : "updated"}}
                                             </div>
                                             <div class="comment"><i class="fa fa-comments"></i>
                                                 @foreach ($comment as $item)

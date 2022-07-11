@@ -29,7 +29,7 @@ class FilmWatchingController extends Controller
             'tap_so',
             'id_film'
         )->where('id_film', $id)
-        ->get();
+            ->get();
 
         $watching = Episode::select(
             'id',
@@ -37,15 +37,19 @@ class FilmWatchingController extends Controller
             'tap_so',
             'id_film'
         )->where('id_film', $id)
-        ->where('tap_so', $episode)
-        ->first();
+            ->where('tap_so', $episode)
+            ->first();
 
-        return view('user.FilmWatching',
-            [
-                'episode' => $episode2,
-                'watching' => $watching
-            ]
-        );
+        if ($watching) {
+            return view(
+                'user.FilmWatching',
+                [
+                    'episode' => $episode2,
+                    'watching' => $watching
+                ]
+            );
+        }
+        return back();
     }
 
     /**
@@ -69,9 +73,9 @@ class FilmWatchingController extends Controller
         $film->save();
 
         $today = Carbon::now()->format('Y-m-d');
-        $view_day = ViewsFromTimeToTime::select('id','luot_xem')
+        $view_day = ViewsFromTimeToTime::select('id', 'luot_xem')
             ->where('id_film', $request->id)
-            ->whereDATE( DB::raw('DATE(created_at)'), $today)
+            ->whereDATE(DB::raw('DATE(created_at)'), $today)
             ->first();
 
         if ($view_day) {

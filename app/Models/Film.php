@@ -46,4 +46,14 @@ class Film extends Model
         'updated_at',
         'create_at'
     ];
+
+    public function category()
+    {
+        return $this->belongsToMany(Category::class, "category_film", "id_film", "id_category");
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, "id_film");
+    }
 }

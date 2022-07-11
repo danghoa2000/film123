@@ -116,6 +116,14 @@ class FilmController extends Controller
         return redirect()->route('film_index');
     }
 
+    public function show($id)
+    {
+        $film = Film::with("category", "comments")
+        ->where('id', $id)->first();
+        return view('admin.film.show', compact('film'));
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      *

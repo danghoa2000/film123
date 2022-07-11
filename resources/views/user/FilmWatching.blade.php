@@ -7,6 +7,7 @@
 @section('content')
     <section class="anime-details spad">
         <div class="container">
+            @if ($watching && $watching->link)
             <div class="row">
                 <div class="col-lg-12">
                     <div class="anime__video__player">
@@ -26,6 +27,7 @@
                     </div>
                 </div>
             </div>
+            @endif
             <div class="row">
                 <div class="col-lg-8">
                     <div class="anime__details__form">

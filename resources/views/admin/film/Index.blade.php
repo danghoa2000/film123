@@ -44,7 +44,7 @@
                 @foreach($data as $row)
                 <tr>
                     <td class="text-left">{{$row->id}} </td>
-                    <td class="text-left test"><img src="{{$row->img}}" style="width: 100px;height:120px"></td>
+                    <td class="text-left test"><a href="{{ route('film_show', [$row->id]) }}"> <img src="{{$row->img}}" style="width: 100px;height:120px"></a></td>
                     <td class="text-left">{{$row->name}}</td>
                     <td class="text-left">{{$row->IMDb}}</td>
                     <td class="text-left">{{$row->nam_sx}}</td>
